@@ -1,0 +1,6 @@
+colorama
+tabulate
+markdown2
+weasyprint
+openai
+
