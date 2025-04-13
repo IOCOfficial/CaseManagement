@@ -29,18 +29,15 @@ A terminal-based investigation case management system with integrated Obsidian v
     ─ .obsidian/
 
 ---
-```
-pip install -r requirements.txt
-```
----
 
 ## 🛠️ Setup Instructions
 
 ### 1. Clone the Repo
 
 ```
-git clone https://github.com/your-username/investigation-case-manager.git
-cd investigation-case-manager
+git clone https://github.com/IOCOfficial/CaseManagement.git Investigations
+cd Investigations
+pip install -r requirements.txt
 ```
 
 ---
