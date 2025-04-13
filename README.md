@@ -45,7 +45,7 @@ cd investigation-case-manager
 
 ---
 
-# 🧠 Optional: Enable ChatGPT Integration
+## 🧠 Optional: Enable ChatGPT Integration
 
 To use AI-powered summaries in your reports:
 
@@ -60,7 +60,7 @@ Restart the terminal or your Python script
 
 ---
 
-# 📦 Vault Template Setup (Obsidian)
+## 📦 Vault Template Setup (Obsidian)
 
 1. Export Your Obsidian Vault Template
 ```
@@ -80,13 +80,13 @@ rsync -avh "/path/to/vault/.obsidian/" ~/vault_template/.obsidian/
 ```
 This prevents issues with extended file attributes on macOS.
 
-## 2. Point the script to this template folder:
+### 2. Point the script to this template folder:
 In your Python script:
 ```
 VAULT_TEMPLATE = os.path.expanduser("~/vault_template/.obsidian")
 ```
 
-# 📝 Usage
+## 📝 Usage
 Run the script:
 ```
 python3 main.py
@@ -106,7 +106,7 @@ python3 main.py
 | 99     | Exit                             |
  -------------------------------------------
 
-# 📑 Report Generation Options
+## 📑 Report Generation Options
 You will be prompted to choose:
   1. Traditional Summary (basic text parsing)
   2. AI Summary via ChatGPT (uses GPT-4 to summarize each folder’s notes)
@@ -115,7 +115,7 @@ Output report is saved to:
 ```
 Case_<ID>/4. Report/Case_<ID>_Report.md
 ```
-# ✨ Optional Enhancements Already Supported
+## ✨ Optional Enhancements Already Supported
 
 - Auto-apply vault layout, plugins, and themes from your template
 - Open Obsidian directly to 0. Introduction.md
@@ -123,7 +123,7 @@ Case_<ID>/4. Report/Case_<ID>_Report.md
 - Truncate long URLs for clean terminal display
 - Summarize and extract key content across folders
 
-# 🛡️ Disclaimer
+## 🛡️ Disclaimer
 This tool supports investigation case management, but should not be used as a sole source of truth.
 All reports must be reviewed by a qualified analyst or investigator.
 
