@@ -32,13 +32,9 @@ A terminal-based investigation case management system with integrated Obsidian v
 
 ## 🛠️ Setup Instructions
 
----
+### ✅ Option 1: Quick Start (recommended)
 
-## 🛠️ Setup Instructions
-
-### ✅ Option 1: Quick Start (Recommended)
-
-```
+```bash
 curl -O https://raw.githubusercontent.com/IOCOfficial/CaseManagement/main/setup.sh
 chmod +x setup.sh
 ./setup.sh
