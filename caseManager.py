@@ -57,6 +57,16 @@ def create_case(case_id, status, description, payment_status="Not Paid"):
     except Exception as e:
         print(f"⚠️ Could not open in Obsidian: {e}")
 
+    VAULT_TEMPLATE = os.path.expanduser("~/vault_template/.obsidian")
+
+    if os.path.exists(VAULT_TEMPLATE):
+        try:
+            shutil.copytree(VAULT_TEMPLATE, os.path.join(case_folder, ".obsidian"))
+            print("📦 Obsidian vault settings applied to new case.")
+        except FileExistsError:
+            print("⚠️ .obsidian folder already exists in this case. Skipping template.")
+
+
 
 def list_cases(return_data=False):
     if not os.path.exists(BASE_DIR):
