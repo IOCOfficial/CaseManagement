@@ -32,7 +32,19 @@ A terminal-based investigation case management system with integrated Obsidian v
 
 ## 🛠️ Setup Instructions
 
-### 1. Clone the Repo
+---
+
+## 🛠️ Setup Instructions
+
+### ✅ Option 1: Quick Start (Recommended)
+
+```
+curl -O https://raw.githubusercontent.com/IOCOfficial/CaseManagement/main/setup.sh
+chmod +x setup.sh
+./setup.sh
+```
+
+### 🧩 Option 2: Manual Setup
 
 ```
 git clone https://github.com/IOCOfficial/CaseManagement.git Investigations
