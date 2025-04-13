@@ -51,6 +51,10 @@ git clone https://github.com/IOCOfficial/CaseManagement.git Investigations
 cd Investigations
 pip install -r requirements.txt
 ```
+then run
+```
+python3 caseManager.py
+```
 
 ---
 
@@ -93,12 +97,6 @@ This prevents issues with extended file attributes on macOS.
 In your Python script:
 ```
 VAULT_TEMPLATE = os.path.expanduser("~/vault_template/.obsidian")
-```
-
-## 📝 Usage
-Run the script:
-```
-python3 main.py
 ```
 
 ## Main Menu:
