@@ -4,6 +4,7 @@ from colorama import init, Fore, Style
 import markdown2
 from weasyprint import HTML
 import os
+from openai import OpenAI
 import shutil
 from datetime import datetime
 from tabulate import tabulate
@@ -253,7 +254,7 @@ def generate_summary_for_section(section_name, text, use_ai=False):
         return "_No content available._"
 
     if not use_ai:
-        # Traditional summary logic
+        # Traditional fallback
         lines = [line.strip() for line in text.splitlines() if line.strip()]
         bullet_points = []
         for line in lines:
@@ -265,35 +266,26 @@ def generate_summary_for_section(section_name, text, use_ai=False):
                 break
         return "\n".join(bullet_points) if bullet_points else "_No summary available._"
 
-    # Use ChatGPT via OpenAI
     try:
-        import openai
-        openai.api_key = os.getenv("OPENAI_API_KEY")
+        # 🔑 Ensure your API key is set in environment variable
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-        if not openai.api_key:
-            return "_OpenAI API key not found. Cannot use AI summary._"
-
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[
-                {
-                    "role": "system",
-                    "content": (
-                        "You are an AI assistant helping generate a formal investigation report for law enforcement. "
-                        f"Summarize this section: '{section_name}' with professionalism and clarity. "
-                        "Use bullet points or a short summary paragraph. Avoid speculation."
-                    )
-                },
+                {"role": "system", "content": (
+                    "You are an AI assistant helping generate a formal investigation report for law enforcement. "
+                    f"Summarize this section: '{section_name}' with professionalism and clarity. "
+                    "Use bullet points or a short summary paragraph. Avoid speculation."
+                )},
                 {"role": "user", "content": text}
             ],
             temperature=0.3
         )
-
-        return response["choices"][0]["message"]["content"].strip()
+        return response.choices[0].message.content.strip()
 
     except Exception as e:
         return f"_AI summary failed: {e}_"
-
 
 def generate_case_report(case_id, use_ai=False):
     case_path = os.path.join(BASE_DIR, f"Case_{case_id}")
