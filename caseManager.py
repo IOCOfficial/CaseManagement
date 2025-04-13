@@ -8,14 +8,12 @@ from openai import OpenAI
 import shutil
 from datetime import datetime
 from tabulate import tabulate
-from dotenv import load_dotenv, set_key, unset_key
 from tqdm import tqdm
-
-
-init(autoreset=True) 
-load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
+from dotenv import load_dotenv, set_key, unset_key
 
 BASE_DIR = os.path.expanduser("~/Investigations")
+
+init(autoreset=True) 
 
 SUBFOLDERS = [
     "0. Introduction",
@@ -25,6 +23,11 @@ SUBFOLDERS = [
     "4. Report",
     "99. Tasks"
 ]
+
+def get_api_key():
+    load_dotenv(dotenv_path=os.path.join(BASE_DIR, ".env"))
+    return os.getenv("OPENAI_API_KEY")
+
 
 def manage_api_key():
     env_path = os.path.join(BASE_DIR, ".env")
@@ -304,8 +307,8 @@ def generate_summary_for_section(section_name, text, use_ai=False):
 
     try:
         # 🔑 Ensure your API key is set in environment variable
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
+        client = OpenAI(api_key=get_api_key())
+    
         response = client.chat.completions.create(
             model="gpt-4",
             messages=[
@@ -511,7 +514,7 @@ def menu():
             if method_choice == "1":
                 generate_case_report(case_id, use_ai=False)
             elif method_choice == "2":
-                api_key = os.getenv("OPENAI_API_KEY")
+                api_key = get_api_key()
                 if not api_key:
                     print("\n⚠️ No OpenAI API key found.")
                     print("To use AI-powered summaries, please:")
