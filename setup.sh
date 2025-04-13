@@ -13,17 +13,17 @@ fi
 # === 2. Move into folder ===
 cd Investigations || { echo "❌ Failed to enter Investigations directory."; exit 1; }
 
-# === 3. Install Python dependencies ===
-echo "📦 Installing Python dependencies..."
-if pip3 install -r requirements.txt; then
-  echo "✅ Python dependencies installed successfully."
-else
-  echo "❌ Failed to install dependencies. Try running:"
-  echo "   pip3 install -r requirements.txt"
-  exit 1
-fi
+# === 3. Create virtual environment ===
+echo "🐍 Creating virtual environment..."
+/opt/homebrew/bin/python3.11 -m venv .venv
 
-# === 4. Ensure vault_template exists ===
+# === 4. Activate environment and install requirements ===
+echo "📦 Activating environment and installing dependencies..."
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# === 5. Ensure vault_template exists ===
 VAULT_TEMPLATE_DIR=~/vault_template/.obsidian
 
 if [ ! -d "$VAULT_TEMPLATE_DIR" ]; then
@@ -45,12 +45,15 @@ else
   echo "📁 Obsidian vault template already exists: $VAULT_TEMPLATE_DIR"
 fi
 
-# === 5. Launch the app ===
+# === 6. Launch the app ===
 echo
 read -p "🚀 Do you want to launch the Case Manager now? (y/n): " launch
 if [[ "$launch" == "y" ]]; then
   echo "▶️ Launching Case Manager..."
-  python3 caseManager.py
+  source .venv/bin/activate
+  python caseManager.py
 else
-  echo "✅ Setup complete. Run the app anytime using: python3 caseManager.py"
+  echo "✅ Setup complete."
+  echo "👉 Next time, run the app with:"
+  echo "   source .venv/bin/activate && python caseManager.py"
 fi
