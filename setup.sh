@@ -15,7 +15,13 @@ cd Investigations || { echo "❌ Failed to enter Investigations directory."; exi
 
 # === 3. Install Python dependencies ===
 echo "📦 Installing Python dependencies..."
-pip3 install -r requirements.txt
+if pip3 install -r requirements.txt; then
+  echo "✅ Python dependencies installed successfully."
+else
+  echo "❌ Failed to install dependencies. Try running:"
+  echo "   pip3 install -r requirements.txt"
+  exit 1
+fi
 
 # === 4. Ensure vault_template exists ===
 VAULT_TEMPLATE_DIR=~/vault_template/.obsidian
