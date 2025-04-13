@@ -18,15 +18,15 @@ A terminal-based investigation case management system with integrated Obsidian v
 ## 📂 Folder Structure (Auto-Generated Per Case)
 
 ~/Investigations/ 
-    └── Case_<ID>/ 
-    ├── 0. Introduction/ 
-    ├── 1. Blockchain Analysis/ 
-    ├── 2. OSINT/ 
-    ├── 3. Evidence/ 
-    ├── 4. Report/ 
-    ├── 99. Tasks/ 
-    ├── notes.txt 
-    └── .obsidian/
+    -Case_<ID>/ 
+    ─ 0. Introduction/ 
+    ─ 1. Blockchain Analysis/ 
+    ─ 2. OSINT/ 
+    ─ 3. Evidence/ 
+    ─ 4. Report/ 
+    ─ 99. Tasks/ 
+    ─ notes.txt 
+    ─ .obsidian/
 
 ---
 ```
