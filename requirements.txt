@@ -3,4 +3,5 @@ tabulate
 markdown2
 weasyprint
 openai
-
+python-dotenv
+tqdm
