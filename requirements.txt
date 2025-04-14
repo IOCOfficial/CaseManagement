@@ -5,3 +5,6 @@ weasyprint
 openai
 python-dotenv
 tqdm
+tiktoken
+pypandoc
+pandoc
